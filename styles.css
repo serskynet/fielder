@@ -1,0 +1,99 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body, html {
+  height: 100%;
+  background-color: #000;
+  overflow: hidden;
+}
+
+canvas#particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+}
+
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #000;
+  animation: fadeOut 2s ease 3s forwards;
+  z-index: 2;
+  position: relative;
+}
+
+.loader img {
+  width: 120px;
+  height: auto;
+  animation: logoEnter 3s ease forwards, pulse 3s ease-in-out infinite;
+  opacity: 0;
+}
+
+@keyframes logoEnter {
+  0% { transform: scale(0.5) rotate(-30deg); opacity: 0; filter: blur(10px); }
+  50% { transform: scale(1.1) rotate(10deg); opacity: 1; filter: blur(2px); }
+  100% { transform: scale(1) rotate(0deg); opacity: 1; filter: blur(0); }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.1); opacity: 0.8; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes fadeOut {
+  to { opacity: 0; visibility: hidden; }
+}
+
+.content {
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+  transition: opacity 2s ease;
+  z-index: 1;
+}
+
+.content.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+h1, p {
+  transition: all 1s ease;
+  opacity: 1;
+}
+
+h1.fade-out, p.fade-out {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+h1.fade-in, p.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+p {
+  font-size: 1.3rem;
+  max-width: 700px;
+  margin: 0 auto;
+}
